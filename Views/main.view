@@ -1,0 +1,42 @@
+{
+  Children={
+        {
+          X=29,
+          Y=19,
+          Name="ExitButton",
+          Type="Button",
+          Text="[Exit]",
+          BackgroundColour='lightGray',
+          TextColour='white',
+        },
+        {
+          X=17,
+          Y=19,
+          Name="LogInButton",
+          Type="Button",
+          Text="[Log In]",
+          BackgroundColour='lightGray',
+          TextColour='white',
+        },
+        {
+		X=20,
+		Y=14,
+		Width=15,
+		Type="TextBox",
+		Name="UsernameTextBox",
+		Placeholder="Username",
+		Active=false
+		},
+        {
+		X=20,
+		Y=16,
+		Width=15,
+		Type="TextBox",
+		Name="PasswordTextBox",
+		Placeholder="Password",
+		Active=false
+		}
+		
+  },
+  BackgroundColour="lightBlue",
+}
