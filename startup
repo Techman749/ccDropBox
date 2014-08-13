@@ -1,0 +1,43 @@
+local bedrockPath='/ccDropBox'
+if OneOS then OneOS.LoadAPI('/System/API/Bedrock.lua', false)
+elseif fs.exists(bedrockPath..'/Bedrock')then 
+os.loadAPI(bedrockPath..'/Bedrock')else if http then print('Downloading Bedrock...')
+local h=http.get('http://pastebin.com/raw.php?i=0MgKNqpN')
+if h then 
+local f=fs.open(bedrockPath..'/Bedrock','w')
+f.write(h.readAll())
+f.close()
+h.close()
+os.loadAPI(bedrockPath..'/Bedrock')
+else error('Failed to download Bedrock. Is your internet working?') end 
+else error('This program needs to download Bedrock to work. Please enable HTTP.') 
+end 
+end 
+if Bedrock then 
+Bedrock.BasePath = bedrockPath 
+Bedrock.ProgramPath = "/ccDropBox" 
+end
+
+
+local program = Bedrock:Initialise()
+
+program:Run(function()
+	text = paintutils.loadImage("/ccDropBox/gui/text")
+	paintutils.drawImage(text,6,1)
+	--logo = paintutils.loadImage("/ccDropBox/gui/logo")
+     --paintutils.drawImage(logo,23,5)
+	program:LoadView("main")
+	
+	program:GetObject("ExitButton").OnClick = function(self, event, side, x, y)
+		program:DisplayAlertWindow('Are you sure?', 'Are you sure you want to exit ccDropbox?', {'Yes', 'No'}, function(value)
+			if value == 'Yes' then
+				term.setBackgroundColor(colors.black)
+				term.clear()
+				term.setCursorPos(1,1)
+				program:Quit()
+			else	
+			end
+		
+		end)
+	end		
+end)
